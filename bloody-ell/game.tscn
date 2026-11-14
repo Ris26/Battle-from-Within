@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://djrxbx2k1ed77"]
 
 [ext_resource type="PackedScene" uid="uid://7vom6ns5bkcj" path="res://player.tscn" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://b1ym03i522hfn" path="res://game.gd" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://btbxid801iewk" path="res://enemy.tscn" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://dset3x7rsjcnc" path="res://arena.tscn" id="3_feb5d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5l4b"]
 normal = Vector2(0.005076077, 0.9999871)
@@ -18,11 +19,23 @@ distance = -221.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 distance = -320.0
 
+[sub_resource type="Environment" id="Environment_h7hx5"]
+background_mode = 3
+background_color = Color(0.42427728, 0.10647347, 0.6207682, 1)
+background_energy_multiplier = 3.8
+background_canvas_max_layer = 5
+ambient_light_source = 2
+ambient_light_color = Color(0.8890039, 0.7658937, 0.98061293, 1)
+ssr_enabled = true
+glow_enabled = true
+glow_bloom = 0.38
+
 [node name="Game" type="Node2D" unique_id=1373688687]
 
-[node name="Player" parent="." unique_id=1579681143 instance=ExtResource("1_80nbo")]
+[node name="enemy" parent="." unique_id=1539721096 instance=ExtResource("1_e2o6t")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=73084360]
+[node name="Player" parent="." unique_id=1579681143 instance=ExtResource("1_80nbo")]
+position = Vector2(0, 2)
 
 [node name="walls" type="StaticBody2D" parent="." unique_id=236476529]
 
@@ -39,11 +52,18 @@ position = Vector2(-356, 0)
 shape = SubResource("WorldBoundaryShape2D_e2o6t")
 
 [node name="bottom" type="CollisionShape2D" parent="walls" unique_id=1252953474]
+position = Vector2(207.25302, -81.20117)
 shape = SubResource("WorldBoundaryShape2D_feb5d")
 
-[node name="Timer" type="Timer" parent="." unique_id=481187242]
-wait_time = 2.229
+[node name="enemy_spawn_timer" type="Timer" parent="." unique_id=481187242]
+wait_time = 0.5
 autostart = true
-script = ExtResource("2_e2o6t")
 
-[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1972262790]
+environment = SubResource("Environment_h7hx5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=73084360]
+
+[node name="arena" parent="." unique_id=1196974143 instance=ExtResource("3_feb5d")]
+
+[connection signal="timeout" from="enemy_spawn_timer" to="enemy_spawn_timer" method="_on_timeout"]
