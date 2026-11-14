@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ck0yj5q44qagn"]
+
+[ext_resource type="Script" uid="uid://c2l1gpu5hhhof" path="res://Script/bullet.gd" id="1_v7oki"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7hx5"]
+height = 26.0
+
+[node name="Bullet" type="Area2D" unique_id=1433316678]
+script = ExtResource("1_v7oki")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=751353962]
+color = Color(0.9821121, 0.78111565, 0.68283314, 1)
+polygon = PackedVector2Array(-8, -10, 7, -10, 14, -4, 14, 4, 7, 10, -8, 10, -14, 4, -14, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560578583]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_h7hx5")
+
+[node name="Timer" type="Timer" parent="." unique_id=2049220069]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

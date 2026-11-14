@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://djrxbx2k1ed77"]
+
+[ext_resource type="PackedScene" uid="uid://7vom6ns5bkcj" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://b1ym03i522hfn" path="res://game.gd" id="2_e2o6t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5l4b"]
+normal = Vector2(0.005076077, 0.9999871)
+distance = 317.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80nbo"]
+normal = Vector2(-0.9999752, -0.0070420788)
+distance = -270.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e2o6t"]
+normal = Vector2(0.9999916, -0.0040983264)
+distance = -221.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
+distance = -320.0
+
+[node name="Game" type="Node2D" unique_id=1373688687]
+
+[node name="Player" parent="." unique_id=1579681143 instance=ExtResource("1_80nbo")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=73084360]
+
+[node name="walls" type="StaticBody2D" parent="." unique_id=236476529]
+
+[node name="top" type="CollisionShape2D" parent="walls" unique_id=589000446]
+position = Vector2(-2, -636)
+shape = SubResource("WorldBoundaryShape2D_v5l4b")
+
+[node name="right" type="CollisionShape2D" parent="walls" unique_id=1810136587]
+position = Vector2(309, -18)
+shape = SubResource("WorldBoundaryShape2D_80nbo")
+
+[node name="left" type="CollisionShape2D" parent="walls" unique_id=1094524786]
+position = Vector2(-356, 0)
+shape = SubResource("WorldBoundaryShape2D_e2o6t")
+
+[node name="bottom" type="CollisionShape2D" parent="walls" unique_id=1252953474]
+shape = SubResource("WorldBoundaryShape2D_feb5d")
+
+[node name="Timer" type="Timer" parent="." unique_id=481187242]
+wait_time = 2.229
+autostart = true
+script = ExtResource("2_e2o6t")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

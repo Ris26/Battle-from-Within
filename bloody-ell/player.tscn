@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7vom6ns5bkcj"]
+
+[ext_resource type="Script" uid="uid://cqey7p8pmalh0" path="res://Script/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://ck0yj5q44qagn" path="res://bullet.tscn" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5l4b"]
+radius = 31.0
+height = 98.00001
+
+[node name="Player" type="CharacterBody2D" unique_id=1579681143]
+position = Vector2(51, -46)
+script = ExtResource("1_4flbx")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=500859475]
+position = Vector2(53, 0)
+rotation = 1.5707964
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1712782482]
+position = Vector2(-44, -57)
+polygon = PackedVector2Array(-1, 3, -1, 99, 95, 77, 96, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606200154]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_v5l4b")
+
+[node name="Bullet" parent="." unique_id=1433316678 instance=ExtResource("2_onrkg")]
+position = Vector2(136, -3)

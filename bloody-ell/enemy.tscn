@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://btbxid801iewk"]
+
+[ext_resource type="Script" uid="uid://bx41sdtndmseg" path="res://enemy.gd" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7hx5"]
+radius = 9.0
+
+[node name="enemy" type="CharacterBody2D" unique_id=1539721096]
+script = ExtResource("1_7k104")
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=958349109]
+polygon = PackedVector2Array(-11, -1, 0, 9, 13, -1, -1, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=609890902]
+shape = SubResource("CircleShape2D_h7hx5")
