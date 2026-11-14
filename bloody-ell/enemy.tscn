@@ -5,11 +5,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7hx5"]
 radius = 9.0
 
-[node name="enemy" type="CharacterBody2D" unique_id=1539721096]
+[node name="enemy" type="CharacterBody2D" unique_id=1539721096 groups=["enemy"]]
+position = Vector2(101, 48)
 script = ExtResource("1_7k104")
 
-[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=958349109]
+[node name="hitbox" type="Area2D" parent="." unique_id=557893142 groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=609890902 groups=["enemy"]]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_h7hx5")
+
+[node name="Polygon2D2" type="Polygon2D" parent="hitbox" unique_id=958349109]
 polygon = PackedVector2Array(-11, -1, 0, 9, 13, -1, -1, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=609890902]
+[node name="stun_timer" type="Timer" parent="." unique_id=1152193968]
+wait_time = 1.814
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1669750842 groups=["enemy"]]
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_h7hx5")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="stun_timer" to="." method="_on_stun_timer_timeout"]

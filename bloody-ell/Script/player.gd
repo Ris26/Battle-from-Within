@@ -4,9 +4,17 @@ const SPEED = 300.0 #kecepatan karakter
 var shooting = preload("res://bullet.tscn") #buat nyambungin ke kodingan bullet
 @onready var muzzle = $Muzzle
 
-func _physics_process(_delta: float) -> void:
-	look_at(get_global_mouse_position()) #buat ngarahin ke mouse
+ #buat ngarahin ke mouse
 
+func _ready() -> void:
+	Global.player = self
+	
+func _exit_tree() -> void:
+	Global.player = null
+
+func _physics_process(_delta: float) -> void:
+	look_at(get_global_mouse_position())
+		
 	#this is for the character to move around, kalo mau diubah ke project>settings>input map
 	velocity.x = Input.get_axis("left", "right") * SPEED 
 	velocity.y = Input.get_axis("up", "down") * SPEED
@@ -21,3 +29,13 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	move_and_slide()
+
+
+
+
+
+func _on_hitbox_area_entered(area: Node2D) -> void:
+	if area.is_in_group("enemy"):
+		visible = false
+		await get_tree().create_timer(0.5).timeout
+		get_tree().reload_current_scene()

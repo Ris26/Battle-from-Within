@@ -8,13 +8,15 @@ height = 26.0
 [node name="Bullet" type="Area2D" unique_id=1433316678]
 script = ExtResource("1_v7oki")
 
+[node name="hitbox" type="Area2D" parent="." unique_id=845372344 groups=["enemy_damager"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1560578583]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_h7hx5")
+
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=751353962]
 color = Color(0.9821121, 0.78111565, 0.68283314, 1)
 polygon = PackedVector2Array(-8, -10, 7, -10, 14, -4, 14, 4, 7, 10, -8, 10, -14, 4, -14, -5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560578583]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_h7hx5")
 
 [node name="Timer" type="Timer" parent="." unique_id=2049220069]
 one_shot = true
