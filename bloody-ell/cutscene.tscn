@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cqybhljgu2a3u"]
+
+[ext_resource type="Script" uid="uid://bnvt7ntnsjgh" path="res://cutscene.gd" id="1_ye7fo"]
+
+[node name="Cutscene" type="Control" unique_id=1145098775]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ye7fo")
+
+[node name="background" type="TextureRect" parent="." unique_id=497837652]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="kiri" type="TextureRect" parent="." unique_id=1244206360]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 366.0
+offset_right = 139.0
+offset_bottom = 406.0
+
+[node name="kanan" type="TextureRect" parent="." unique_id=942006025]
+layout_mode = 0
+offset_left = 909.0
+offset_top = 353.0
+offset_right = 949.0
+offset_bottom = 393.0
+
+[node name="dialogbox" type="Panel" parent="." unique_id=1032403862]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 432.0
+offset_right = 1098.0
+offset_bottom = 614.0
+
+[node name="nama label" type="Label" parent="dialogbox" unique_id=439710469]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 185.0
+offset_bottom = 35.0
+
+[node name="tekslabel" type="Label" parent="dialogbox" unique_id=1306585678]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 55.0
+offset_right = 1040.0
+offset_bottom = 163.0
