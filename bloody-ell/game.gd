@@ -13,3 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_timeout() -> void:
 	pass # Replace with function body.
+var enemy_1 = preload("res://enemy.tscn")
+var node_creation_parent = null
+var player = null 
